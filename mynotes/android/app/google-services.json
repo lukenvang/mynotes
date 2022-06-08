@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "483665447193",
+    "project_id": "mynotes-rider-kick",
+    "storage_bucket": "mynotes-rider-kick.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:483665447193:android:67100abd04af74df269d88",
+        "android_client_info": {
+          "package_name": "com.dummy.mynotes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "483665447193-upcjr83cq55f47lmolqadrad4cat5f6f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTfrFTQD5w-x47t138CTXNaEGnno5vwiA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "483665447193-upcjr83cq55f47lmolqadrad4cat5f6f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
