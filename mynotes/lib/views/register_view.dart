@@ -1,14 +1,14 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-class LoginView extends StatefulWidget {
-  const LoginView({Key? key}) : super(key: key);
+class RegisterView extends StatefulWidget {
+  const RegisterView({Key? key}) : super(key: key);
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  _RegisterViewState createState() => _RegisterViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _RegisterViewState extends State<RegisterView> {
   late final TextEditingController _email;
   late final TextEditingController _password;
 
@@ -30,7 +30,7 @@ class _LoginViewState extends State<LoginView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Login'),
+        title: const Text('Register'),
       ),
       body: Column(
         children: [
@@ -58,31 +58,31 @@ class _LoginViewState extends State<LoginView> {
 
               try {
                 final userCredential = await FirebaseAuth.instance
-                    .signInWithEmailAndPassword(
+                    .createUserWithEmailAndPassword(
                         email: email, password: password);
-                print(userCredential.toString());
+                print(userCredential);
               } on FirebaseAuthException catch (e) {
-                if (e.code == 'user-not-found') {
-                  print('User not found');
-                } else if (e.code == 'wrong-password') {
-                  print('Wrong password');
-                } else if (e.code == 'user-disabled') {
-                  print('User disabled');
+                if (e.code == 'weak-password') {
+                  print('Weak password');
+                } else if (e.code == 'email-already-in-use') {
+                  print('Email already in user');
                 } else if (e.code == 'invalid-email') {
                   print('Invalid email');
+                } else if (e.code == 'operation-not-allowed') {
+                  print('Operation not allowed');
                 } else {
                   print(e.code);
                 }
               }
             },
-            child: const Text('Login'),
+            child: const Text('Register'),
           ),
           TextButton(
               onPressed: () {
                 Navigator.of(context)
-                    .pushNamedAndRemoveUntil('/register/', (route) => false);
+                    .pushNamedAndRemoveUntil('/login/', (route) => false);
               },
-              child: const Text('Not registered? Register here!'))
+              child: const Text('Already registered? Login here!'))
         ],
       ),
     );
